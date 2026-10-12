@@ -3,13 +3,35 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Task task1 = new Task(
-            "Learn Java",
-            "Practice OOP concepts"
-        );
+        TaskManager manager = new TaskManager();
 
-        System.out.println("Title: " + task1.getTitle());
-        System.out.println("Description: " + task1.getDescription());
-        System.out.println("Status: " + task1.getStatus());
-    }
-}
+        // CREATE
+        manager.addTask(new Task("Learn Java", "Practice OOP"));
+        manager.addTask(new Task("Learn Git", "Practice Git"));
+
+        // READ
+        System.out.println("Before update:");
+        manager.showTasks();
+
+        // UPDATE
+        manager.updateTask(0, TaskStatus.DONE);
+
+        System.out.println("After update:");
+        manager.showTasks();
+
+        // DELETE
+        manager.deleteTask(1);
+
+        System.out.println("After delete:");
+        manager.showTasks();
+
+        // EXCEPTION HANDLING
+        try {
+            manager.deleteTask(10);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+    } // Fin de main()
+
+} // Fin de class Main

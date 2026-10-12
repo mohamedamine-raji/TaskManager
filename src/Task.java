@@ -22,4 +22,13 @@ public class Task {
     public TaskStatus getStatus() {
         return status;
     }
+ 
+public void setStatus(TaskStatus status) {
+    if (status == null) {
+        throw new IllegalArgumentException("Status cannot be null");
+    }
+
+    this.status = status;
+}   
+
 }
